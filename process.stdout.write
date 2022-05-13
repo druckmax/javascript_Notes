@@ -1,0 +1,1 @@
+process.stdout.write(`${i} `) => puts multiple outputs in a straight line in the terminal

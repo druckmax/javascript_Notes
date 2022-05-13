@@ -1,0 +1,36 @@
+functions, like const and let, are also blockscoped. This means they are only accessible in the block its defined in, or children scopes of the block.
+BUT this only applies if we are using 'strict mode'.
+
+the scope chain can be seen as a one way street. it only leads from the inner scopes to outer scopes.
+
+Different variables with the same name can be defined if they happen to be in different scopes. For example:
+
+function functionScope01 () {
+	let output = 'output01':
+	
+	function functionScope02 () {
+	let output = 'output02'
+	
+	console.log(output) ==> outputs 'output02'
+	}
+	
+console.log(output) ==> outputs 'output01'
+}
+
+BUUUUUUT if we simply change the value of a variable of the outer scope, instead of creating a new variable with the same name, this will output the following:
+
+function functionScope01 () {
+	let output = 'output01':
+	
+	function functionScope02 () {
+	output = 'output02'
+	
+	console.log(output) ==> outputs 'output02'
+	}
+	
+console.log(output) ==> outputs 'output02'
+}
+
+---------------------------------------------------------------------------
+
+

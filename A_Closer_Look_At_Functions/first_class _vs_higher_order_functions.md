@@ -45,3 +45,26 @@ transformer('Javascript is fun', oneWord)
 
 Callback functions are frequently used in Javascript. They help us split up our code into several parts, which then can be reused and interconnected.
 The second and way more important advantage is, that callback functions allow us to make abstractions. Abstraction basically means hiding the detail of some code implementation and showing only the essential features. For example the transformer function is only concerned with transforming a string, but does not care how it is actually done. It is delegating the process to a lower level of function. This is why it is called a higher order function, because it operatres on a higher level of abstaction, leaving the low level details to the "low-level" functions.
+
+## Functions returning functions
+
+Functions can return other functions, which will come in handy regarding functional programming. In this example we have a greet function, which takes in a greeting as an argument. The function immediately returns another anonymous function, which takes the name as an argument.
+
+    const greet = function(greeting) {
+        return function(name) {
+            console.log(`${greeting} ${name}`)
+        }
+    }
+
+Then we can store the greet function in another variable, invoking it with an argument passed into the function. Afterwards we are basically able to target the inner function of the outer function from the global scope by passing arguments to the variable holding the greet function.
+
+    const greeterHey = greet('Hey');
+    greeterHey('Max');  ==> outputs: 'Hey Max'
+    greeterHey('Jonas');  ==> outputs: 'Hey Jonas'
+
+This can be written in a very concise way, using arrow functions: 
+
+    const greet = greeting => name => console.log(`${greeting} ${name});
+
+You might think, that this looks weird, since we are not invoking the outer function again with a new argument for the greeting. How does Javascript now what to take for a greeting? At this point, it is enough to know, that it happens because of closures. Simply put, closures remember the outer function scope even after creation time.
+

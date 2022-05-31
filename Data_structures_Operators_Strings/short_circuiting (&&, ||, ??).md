@@ -31,7 +31,7 @@ The nullish coalescing operator works with the idea of nullish values instead of
 	restaurant.numGuests = 0;
 	const guests3 = restaurant.numGuests || 10;	==> output: 10
 
-	const guestsFIX = restaurant.numGuests ?? 10;	==> output: 10
+	const guestsFIX = restaurant.numGuests ?? 10;	==> output: 0
 
 
 ## Logical && operator

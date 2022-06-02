@@ -114,3 +114,17 @@ The Object.prototype is the end of the prototype chain, so the prototype of Obje
 The prototype chain is similar to the scope chain, but it is only for prototypes. Whenever Javascript cannot find a certain variable in a scope, it will look for it in the parent scope, the next step in the scope chain. This logic also applies to the prototype chain.
 
 ![prototype chain](/images/oop_prototype_chain.png)
+
+## Creating methods on last Object.prototype
+
+We can create methods on the last Object.prototype property of the constructor in the prototype chain, which will apply for all the objects. For example we can create an array method on the Array.prototype, which then will be availabe for all the array._\_proto_\_ instances. In this example we want to have a method that only returns unique values and returns an array.
+Though this is possible, it is not recommended to do this, because a future JS update might add a method with the same name. Also when working in a team, developers might create prototypes of the same functions with the same name, which will lead to problems. Generally speaking creating own prototypes on the object constructor is a great cause for many bugs.
+
+```js
+Array.prototype.unique = function() {
+    return [...new Set(this)];
+};
+
+console.log(arr.unique());
+```
+

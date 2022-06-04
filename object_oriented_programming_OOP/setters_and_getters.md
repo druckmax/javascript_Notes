@@ -44,7 +44,7 @@ set fullName(name) {
     }
 }
 ```
-The setter in this example is often combined with a getter, because we cannot access person.fullName, because this property does currently not exist (it is _fullName). Now when we access person.fullName, the getter function is called, which returns the validated fullName from the setter function.
+The setter in this example is often combined with a getter, because we cannot access person.fullName, because this property does 'currently not exist (it is _fullName). Now when we access person.fullName, the getter function is called, which returns the validated fullName from the setter function.
 
 ```js
 get fullName() {

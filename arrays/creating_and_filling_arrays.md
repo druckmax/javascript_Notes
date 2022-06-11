@@ -53,3 +53,9 @@ movementsUI.map(el => Number(el.textContent.replace('€', '')));
 const movementsUI = Array.from(document.querySelectorAll('.movements__value'),
                                 el => Number(el.textContent.replace('€', ''));
 ```
+
+Note: We could also simply spread the node list into an array, but would have to map the elements seperately afterwards.
+
+```js
+const movementsUI2 = [...document.querySelectorAll('.movements__value')];
+```

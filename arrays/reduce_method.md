@@ -14,3 +14,21 @@ const maximum = movements.reduce((acc, curr) => acc < curr ? acc = curr : acc)
 
 console.log(maximum)    // output: 400;
 ```
+
+**Practical use case:** In this exmple we are using reduce to store the positive and negative movements from a banking account into a new object with specified keys for the deposits and withdrawals. While using the bracket notation for this, reduce always expects that the accumulator is being returned.
+
+```js
+const {deposits, withdrawals} = accounts.
+    .flatMap(acc => acc.movements)
+    reduce((sums, acc) => {
+        cur > 0 ? sum.deposits += cur :
+                  sum.withdrawals += cur;
+        return sums;          
+    }, {depostis: 0, withdrawals: 0});
+
+// We can improve the syntax in the reduce method using the bracktets notation:
+    .reduce((sums, acc) => {
+        sums[cur > 0 ? 'deposits' : 'withdrawals'] += cur;
+        return sums;
+    }, {deposits: 0, withdrawals: 0});
+```

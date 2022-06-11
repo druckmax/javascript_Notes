@@ -2,7 +2,9 @@
 
 In addititon to the constructor function and the ES6 classes, Javascript provides a third way for implementing prototypal inheritance, namely the Object.create method. This method's syntax works very differently compared to constructor functions and classes.
 
-Object.create allows us to omit the new keyword. Also there are no prototypes and no constructor functions involved. Instead we can manually set an object to be the prototype of any other object. Of course, behind the scenes instances created with the Object.create method work just the same as instances built in the other two ways.
+Object.create allows us to omit the new keyword. Also there are no prototypes and no constructor functions involved. Instead we can manually set an object to be the prototype of any other object. Of course, behind the scenes instances created with the Object.create method work just the same as instances built with constructor functions and ES6 classes.
+
+While constructor functions and ES6 classes try to mimic the behaviour of "traditional OOP" classes, Object.create() simply links objects together instead trying to "fake" the behaviour of classes.
 
 ```js
 const PersonProto = {

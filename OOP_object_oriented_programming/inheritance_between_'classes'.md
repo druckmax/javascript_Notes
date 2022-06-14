@@ -90,8 +90,8 @@ const martha = new StudentCL('Martha', 2012);
 
 ## Object.create
 
-Using the Object.create method, we can simply create a new StudentProto object from the PersonProto object. Now StudentProto inherits from PersonProto and establish a prototype chain. Thereore, a newly created object from the StudentProto will inherit all properties and methods from the PersonProto prototype as well.
-Afterwards, when adding a extended init method for the StudentProto, we can make use of the init method in PersonProto by calling this method with call(), where we will set the this keyword and the properties from the parent Proto Object. We can simply add more parameters after this.
+Using the Object.create method, we can simply create a new StudentProto object from the PersonProto object. Now StudentProto inherits from PersonProto and establishes a prototype chain. Thereore, a newly created object from the StudentProto will inherit all properties and methods from the PersonProto prototype as well.
+Afterwards, when adding an extended init method for the StudentProto, we can make use of the init method in PersonProto by calling this method with call(), where we will set the this keyword and the properties from the parent Proto Object. We can simply add more parameters after this.
 
 ```js
 const PersonProto = {

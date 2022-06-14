@@ -8,6 +8,8 @@ What is important to note is that the code execution will not stop once Javascri
 
 Argument we pass in after the delay time, can be accessed in the arguments of the callback function.
 
+## setTimeOut
+
 ```js
 setTimeout((ing1, ing2) => console.log(`Pizza with ${ing1} and ${ing2} is ready 🍕`), 3000, 'olives', 'spinach');
 ```
@@ -20,3 +22,16 @@ array = ['olives', 'spinach'];
 const timer = setTimeout((ing1, ing2) => console.log(`Pizza with ${ing1} and ${ing2} is ready 🍕`), 3000, ...array);
 
 if(ingredients.includes('spinach')) clearTimeout(timer);
+```
+
+## setInterval
+
+If we want to repeatedly run a function in a given intervall we can use the setInterval timer. In the following example a new date is created and logged to the console every second.
+
+```js
+setInterval(function() {
+  const now = new Date();
+  console.log(now);
+}, 1000);
+```
+

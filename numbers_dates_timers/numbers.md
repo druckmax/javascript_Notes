@@ -57,3 +57,33 @@ Number.isFinite('20')   // false
 Number.isFinite(+'20X') // false
 Number.isFinite(23 / 0) // false
 ```
+
+## Numeric Seperators
+
+When writing large numbers we usally seperate the number with a , or . sign for every thousands digit like 10.000.000.000.
+To make our code more readable we can use the underscore in Javascript to seperate big numbers. The underscore will be ignored by the Javascript engine, so this is a great tool to improve the readability of our code.
+
+```js
+const diameter = 281_460_000_000;   // output 281460000000
+
+const priceCents = 345_99   // output 34599;
+```
+
+Of course a numeric seperator cannot be placed inside of a string if we want it to be converted into a number.
+
+## Internationalizing Numbers (Intl)
+
+We can use Javascript's internationalization API to adjust the display of numbers according to the user's country. In this example our specified formatter (Intl.NumberFormat('lang-country')) generates a different display of larger numbers. In the US a thousands digit is seperated with a comma and the decimal with a comme, while in Germany it is the other way around.
+
+We can also get the language specifications from the user's browser, by passing in navigator.language to our NumberFormat function.
+
+We can further specify the formatter with a options object, which we pass in as a second argument. This object contains information about the style(unit || currency etc.), the unit ('miles per hour, celsius), currency (EUR || USD), useGrouping(set or remove the thousand digits seperates for example) and many more.
+
+```js
+const num = 3884764.23;
+
+console.log(new Intl.NumberFormat('en-US')).format(num);    // output: 3,884,764.23
+console.log(new Intl.NumberFormat('de-DE')).format(num);    // output: 3.884.764,23
+
+console.log(new Intl.NumberFormat(navigator.language).format(num))
+```

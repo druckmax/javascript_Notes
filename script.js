@@ -33,3 +33,7 @@
 //     const now = new Date();
 //     console.log(`${now.getHours()} : ${`${now.getMinutes()}`.padStart(2, '0')} : ${`${now.getSeconds()}`.padStart(2, '0')}` );
 // }, 1000);
+
+const randomValues = (...args) => args.flat();
+
+console.log(randomValues("Naqvi", 23, [2,5, 'berlin'])); 

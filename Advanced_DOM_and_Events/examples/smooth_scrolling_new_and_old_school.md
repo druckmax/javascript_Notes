@@ -3,7 +3,7 @@
 ### Old School:
 First we need to get the coordinates of the element we want to scroll to. We do this with the <code>getBoundingClientRect()</code> method.
 
-We call the <codescrollTo</code> method on the window object. Then we calculate the absolute position of the element by adding the <code>pageOffset</code> for the respective axis. This needs to be done, because our coordinates only return a relative value based on the distance to the top of the viewport. We retrieve the values from our coordinates for the axi with the .left and .top properties.
+We call the <code>scrollTo</code> method on the window object. Then we calculate the absolute position of the element by adding the <code>pageOffset</code> for the respective axis. This needs to be done, because our coordinates only return a relative value based on the distance to the top of the viewport. We retrieve the values from our coordinates for the axi with the .left and .top properties.
 
 In order to enable smooth scrolling we can to this calculation inside of an object and get access to the behavior key, which we can set to smooth.
 

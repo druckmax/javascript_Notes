@@ -42,6 +42,8 @@ setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
 
 ## Event Phases: Bubbling and Capturing
 
+![DOM_event_phases](/images/DOM_capture_target_bubbling.png)
+
 When a user clicks on an element, a link for example, an event is being generated, however not on the element itself, but the root of the document. From there the event "travels" down through the DOM tree to the target element, which is called the **capturing phase**. In this process it will pass through all the parent elements of the target element.
 
 As soon as the event reaches its target, the **target phase** begins. Now events can be handled at the target, for example using eventListeners.
@@ -81,7 +83,7 @@ const randomColor = () =>
 document.querySelector('.nav__link').addEventListener('click', function (e) {
   this.style.backgroundColor = randomColor();
   console.log('LINK', e.target); // returns the a element
-  console.log(e.currentTarget); // returns the a element
+  console.log(e.currentTarget); // returns the a element(the element the handler is attached to)
   console.log(e.currentTarget === this); // true
 
   // Stop propagation: BAD PRACTICE

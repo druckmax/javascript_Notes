@@ -78,3 +78,12 @@ If we wanted to message to appear in multiple places we first need to clone the 
 ```js
 header.append(message.cloneNode(true));
 ```
+
+#### Deleting
+
+```js
+// Deleting an element
+message.remove();
+// Old way of deleting
+message.parentElement.removeChild(message);
+```

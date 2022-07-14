@@ -1,0 +1,21 @@
+# How The Web Works: Requests and Responses
+
+### Request-Response-Model
+
+![how the web works](/images/asynchronous_how_the_web_works.png)
+
+Whenever we want to access a web server, the browser, which is the client, sends a request to the server. The server will then send back a response, which contains the data we requested. This whole process is called **Request-Response-Model** or **Client-Server-Architecture**.
+
+An URL, used to access an webserver, consists of a protocol, like HTTP or HTTP, followed by the domain name and the resource. This domain name, however, is not the actual address of the server we want to access. Before accesssing the webserver, this domain name needs to be converted to the real address of the server, which is done by the DNS lookup. DNS stands for **D**omain **N**ame **S**erver, which are a special kind of server, that can be compared to a phonebook, only for servers. So before we get access to the server, the browser makes a request to the DNS, in order to convert the domain name to the address. As a result we get the IP address of the web server we want to access. This address will be sent back to the browser and now we can access the desired webserver.
+
+In doing so, a TCP/IP socket connection is established between the browser and the server. This connection is maintained as long as it takes for all the data to be transmitted. TCP stands for Transmission Control Protcol, IP stands for Internet Protcol. Both are communication protocols, that define exactly how data travels accross the web, or in other ways, set the rules of how two or more parties should communicate. They can be seen as the internet's fundamental control system.
+
+The job of the TCP protocol is to break down the request and reponses into a large amount of smaller chunks, called packets, before they are sent. As soon as the small packets arrive, TCP reassembles them back into the original request or response. This is necessary so that each packet can take a different route to its destination, which benefits the performance and speed of the transmission. The IP protocol makes sure that these small packets arrive at the right destination.
+
+As soon as the TCP/IP connection is established, we can now make an HTTP request. HTTP stands for Hypertext Transfer Protocol, which is another communication protocol. The most important part of an HTTP request is the so called start line, which holds information about the HTTP method(GET or POST), the request target (basically the resource part of the URL) and the HTTP version. If the request target would be empty, we would access the web server's root. Another important part of the HTTP request is the so called HTTP request headers. For example, a header holds information about which browser was used to make the request, the language or the time and many more. The header is followed by the request body, which will only be present when sending data to the server (POST). This body could hold the data of a HTML form.
+
+Additionally to an HTTP request, HTTPS requests exist. The main difference between those two requests, is that HTTPS is encrypted using TLS or SSL protocols.
+
+Once our HTTP request is processed, the web server sends an HTTP response, which is quite similar to the request, containing a start-line, headers and a body. The start line of an response also has a status code and a status message, in order to tell the client if the request as been successfull or failed (e.g. 200 = OK, 404 = Page Not Found). The body of the reponse usually contains the requested data, e.g. in a JSON format from a Web API or the HTML of a web page we requested. 
+
+If we only request data from the an WEB API, for example information about Portugal, only single HTTP request needs to be made. When accessing an webpage however, many more requests follow the inital one. For example, in the first response we get the HTML, the HTML will be read by the browser and in order to be able to complete the build of the page, the browser sends a request for each of the assests, which are needed to proceed, e.g. CSS file, JS script, images and so on. While some of the requests can happen at the same time, the amount of simultaneous requests is limited.

@@ -61,7 +61,7 @@ future.setDay()
 In Javascript we can do calculations with dates, e.g. subtract one date from another to calculate how much time has passed between the two dates. This is possible, because Javacript converts every date to its timestamp, whenever we try to convert a date to number, e.g. for calculations.
 
 ```js
-const calcDaysPassed = (date1, dat2) => Math.abs(date2 - date1) / (1000 * 60 * 60 *24);
+const calcDaysPassed = (date1, date2) => Math.abs(date2 - date1) / (1000 * 60 * 60 *24);
 
 const days1 = calcDaysPassed(new Date(2037, 3 , 14), new Date(2037, 3, 24));
 

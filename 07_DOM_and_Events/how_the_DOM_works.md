@@ -1,4 +1,12 @@
-# How the DOM works
+# The DOM
+
+The DOM (Document Object Model) is a complete representation of the HTML content, so we can access and change HTML elements via Javascript.
+The DOM is structured like a family tree and we refer to the single elements as children, siblings, parents etc. The single representated elements are also called nodes.
+
+**The DOM does not acutally belong to Javascript...**
+... but instead belongs to the group of WEB API's (Application Programming Interfaces). Simply put, Web API's are like libraries written in Javascript. The DOM-library is automatically available for us without installation. There is an official DOM-specification for all browsers, so that the DOM works the same way in every one of them.
+
+## How the DOM works
 
 The DOM can be seen as the interface between our Javascript code and the browser, or, more specifically, HTML documents that are rendered in and by the browser. The DOM therefore allows our code to interact with the browser. We can write Javascript to create, modify and delete HTML elements, set styles, classes and attributes, and listen and respond to events. A DOM tree is generated from an HTML document, which is a tree-like structure made out of nodes. The DOM is vastly complex API with a lot of methods and properties to interact with the DOM tree. The DOM tree consists of different kinds of nodes, e.g. one being a HTML element and another being just plain text. Methods and properties are organized into these different kinds of nodes.
 

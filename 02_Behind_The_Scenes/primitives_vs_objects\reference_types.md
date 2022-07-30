@@ -36,4 +36,17 @@ In order to really copy an object we can use a function called Object.assign(). 
 
 A problem with this method is that it only works on top level. So an object inside an object will still refer to the same adress in the heap. We say that <code>Object.assign()</code> only creates a 'shallow copy' and not a 'deep clone', which is what we like to have in this example.
 
-To create a deep clone is beyond the scope at this point of time. But a way to do this would be to include a library like 'lodash'.
+To create a deep clone is beyond the scope at this point of time. But a way to do this would be to include a library like 'lodash'. Using this library, we can easily create a clone with the cloneDeep() methid.
+
+```js
+import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+
+const state = {
+    cart: [
+        {product: 'bread', quantity: 5}
+        {product: 'pizza', quantity: 5}
+    ]
+};
+
+const stateClone = cloneDeep(state);
+```

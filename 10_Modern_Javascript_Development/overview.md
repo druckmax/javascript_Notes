@@ -91,3 +91,48 @@ export default function(x,y) {
 /////////////////////////////////
 import defaultExportExample from './shopping.js'
 ```
+
+### The Module Pattern (before ES6)
+
+Before the introduction of modules in ES6, developers needed a workaround to implement the functionalities of modules. This was done using functions, and IIFE's in particular. Functions offer the opportunity to encapsulate values and to make them privat, as well as providing a reusability.
+
+In order to provide a public API, developers used to return an object from the IIFE and store the whole function in a new variable. Again, when accessing values of the public API, the appearance resemble that of a class, calling its methods and accessing its values.
+
+This whole process is also a perfect example for the workings of closures. We can access and manipulate values of the function even after its execution finished, because closures allow functions(methods) to have access to all the variables that were present during its creation (or its 'birthplace').
+
+```js
+const ShoppingCart = (function() {
+    const cart = [];
+    const shippingCost = 10;
+    const totalPrice = 237;
+
+    const addToCart = function(product, quantity) {
+        console.log(`${quantity} ${product} added to the cart!`)
+    }
+
+    return {cart, shippingCost, totalPrice, addToCart};
+})();
+
+ShoppingCart.addToCart('apple', 4);
+```
+
+This module pattern worked a long time before the introduction modules in ES6, but it has some limitations. If we wanted to have several files, basically one module per file, we would have to link all of the scripts in the HTML individually, which makes the attention to the order essential. Also all of the variables would live inside of the global scope and could lead to global name space pollution. Also there would be no way of bundling and compressing the files with a module bundler.
+
+### Modules in Node.js
+
+Only recently ES6 modules were added to Node.js, which is a runtime environment for Javascript apart from the browser. Therefore developers often times face another kind of modules, which are commonJS modules.
+
+The functionality is very similar, but the syntax differs slighty, as you can see in this example. To export a value, we target an export object, name the variable with the dot notation and assign the value to this variable of the export object.
+
+In order to import something, we refer the given name of the export, and then call a require function.
+
+```js
+// Export
+export.addToCart = function(product, quantity) {
+    cart.push(product, quantity);
+};
+
+//Import
+
+const { addToCart } = require('./shoppingCart.js')
+```

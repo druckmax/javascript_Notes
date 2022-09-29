@@ -20,12 +20,12 @@ import cloneDeep from 'lodash';
 
 During building Parcel will create a new folder named dist, which holds all the newly built files.
 
-If we want a a dist foler ready for production, we can also write a npm script for the build process, which compresses, minifies and eliminates dead code.
+If we want a a dist foler ready for production, we can also write a npm script for the build process, which compresses, minifies and eliminates dead code. We need to specify where to create the dist folder by adding the --dist-dir flag followed by the location.
 
 ```json
 "scripts": {
     "start": "parcel index.html",
-    "build": "parcel build index.html"
+    "build": "parcel build index.html --dist-dir ./dist"
 }
 ```
 

@@ -36,3 +36,54 @@ If the the test signature is the same as the original signature then this means 
 Without the secret stored on the server, no one will be able to manipulate the JWT data, because they cannot create a valid signature for the new data. SOmeone could manipulate the data of course, but it will always fail during verification.
 
 ![jwt-how-it-works](../images/jwt-how-it-works.png)
+
+## JWT in Practice
+
+```js
+const jwt = require("jsonwebtoken");
+const User = require("../models/userModel");
+const catchAsync = require("../utils/catchAsync");
+
+exports.signup = catchAsync(async (req, res, next) => {
+  // SECURITY HAZARD: Anyone could basically log into our database as an admin
+  // const user = await User.create(req.body);
+
+  // FIX: With this code we make sure to only allow the data that we actually need
+  // This prevents from register as an admin. To do so we create a new user, but need to edit the role in MongoDB Compass for example.
+  const user = await User.create({
+    name: req.body.name,
+    email: req.body.email,
+    password: req.body.password,
+    passwordConfirm: req.body.passwordConfirm,
+  });
+
+  const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN,
+  });
+
+  res.status(201).json({
+    status: "success",
+    token,
+    data: {
+      user,
+    },
+  });
+});
+```
+
+```json
+JWT_SECRET=this-is-a-secret-secret0for0the0secret
+JWT_EXPIRES_IN=90d
+```
+
+In this example we want to implement the functionality that the user can be immediately logged in as soon as the account is created.
+
+After installing jsonwebtoken from npm, the first method we will use is the sign method, which accepts the payload as the first argument, which is represented as an object. In our case we only want the ID of the user.
+
+The second argument represents the secret, which will be a string. The perfect place for storing those secrets is our .config.env file. Remember that with a HSA 256 encription our secret should be at least 32 characters long, but the longer the better ;).
+
+As a third argument the method accepts a options object. In our case we want to add an expiration date for the token. This is needed for the functionality of logging out a user after a certain period of time, simply as a security measure. Again we can store this information in our environment variable. The option accepts values such as 90d for days, h for hours, m for mins and s for seconds. In our case it is set to 90 days.
+
+Now we can add the token in our response object, in order to acheive that the newly created user can immediately be logged in. In order to do so the client needs to store the taken in a cookie or local storage, of course.
+
+In case you wondered where we put the header: the header will be created automatically.

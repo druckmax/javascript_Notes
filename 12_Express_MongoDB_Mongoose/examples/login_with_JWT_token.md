@@ -1,4 +1,4 @@
-# Login
+# Login with JWT
 
 In order to implement the functionality of users logging in, we need to export a login function, which will be passed as a controller in the post method of the '/login' route.
 

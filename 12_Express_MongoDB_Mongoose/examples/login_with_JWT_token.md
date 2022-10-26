@@ -53,8 +53,8 @@ In case if you are wondering why we can simply create the same hash from a passw
 Now we can call the correctPassword method on the user and we do this inside of our if else statement which checks if the user does not exist first. The reason for that is, that if we put it outside of the if statement after the user like this,
 
 ```js
-  const user = await User.findOne({ email }).select('+password');
-  const correct = await user.correctPassword(password))M
+const user = await User.findOne({ email }).select("+password");
+const correct = await user.correctPassword(password);
 ```
 
 we get an error if the user cannot be found and returns undefined. So we can simply put it in the condition of the if statement and return an error if the user OR the password is undefined / incorrect. So only if the user exists the right hand side of the logical or operator will be executed.

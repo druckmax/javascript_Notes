@@ -33,7 +33,7 @@ tourSchema.post("save", function (doc, next) {
 
 ## Query Middleware
 
-Query middleware allows us to run functions befoe or after a certain query is executed.
+Query middleware allows us to run functions before or after a certain query is executed.
 
 While post and pre hooks look identical in terms of syntax, the difference of the query middleware and the document middleware lies in the this keyword. When we define the 'find' trigger in the pre hook, the this keyword will now point to the current query object.
 
